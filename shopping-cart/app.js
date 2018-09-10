@@ -4,13 +4,16 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var expressHbs = require('express-handlebars');
+var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 
 var app = express();
 
+mongoose.connect('mongodb://brendon1911-node-shopping-cart-6381074/shopping-cart', { useNewUrlParser: true });
+
 // view engine setup
-app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}))
+app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
 app.set('view engine', '.hbs');
 
 app.use(logger('dev'));
